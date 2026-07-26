@@ -1,0 +1,88 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Packaging and build output
+build/
+dist/
+*.egg-info/
+*.egg
+*.spec
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.code-workspace
+*.swp
+*.swo
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+~$*
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.*
+credentials.*
+
+# Downloaded models and machine-learning caches
+.cache/
+models/
+model-cache/
+huggingface/
+huggingface-cache/
+
+# Generated media and transcripts
+*_output/
+*_video_only.*
+*_audio_only.*
+*_transcript.txt
+*_transcript_timestamps.txt
+
+# Common source media formats
+*.mp4
+*.mkv
+*.mov
+*.avi
+*.webm
+*.m4v
+*.wmv
+*.flv
+*.mpeg
+*.mpg
+*.ts
+*.mp3
+*.wav
+*.m4a
+*.aac
+*.flac
+*.ogg
+
+# Keep deliberately committed sample assets
+!examples/**/*.mp4
+!examples/**/*.mp3
+!examples/**/*.wav
+!examples/**/*.txt
